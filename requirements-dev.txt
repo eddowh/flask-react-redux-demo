@@ -5,13 +5,19 @@
 #    pip-compile --output-file requirements-dev.txt requirements-dev.in
 #
 
+alembic==0.8.6            # via flask-migrate
 click==6.6                # via flask, pip-tools
 first==2.0.1              # via pip-tools
-Flask==0.11.1
+Flask-Migrate==1.8.0
+Flask-Script==2.0.5       # via flask-migrate
+Flask-SQLAlchemy==2.1     # via flask-migrate
+Flask==0.11.1             # via flask-migrate, flask-script, flask-sqlalchemy
 itsdangerous==0.24        # via flask
 Jinja2==2.8               # via flask
-MarkupSafe==0.23          # via jinja2
+Mako==1.0.4               # via alembic
+MarkupSafe==0.23          # via jinja2, mako
 pip-tools==1.6.5
+python-editor==1.0.1      # via alembic
 six==1.10.0               # via pip-tools
-SQLAlchemy==1.0.13
+SQLAlchemy==1.0.13        # via alembic, flask-sqlalchemy
 Werkzeug==0.11.10         # via flask

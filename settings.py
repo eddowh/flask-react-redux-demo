@@ -5,7 +5,17 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 APP_DIR = os.path.join(BASE_DIR, 'server')
 
-DEBUG = True
+INSTALLED_APPS = [
+    'restaurants',
+]
 
-HOST = 'localhost'
-PORT = 5000
+DATABASES = {
+    'DEFAULT': {
+        'URI': 'sqlite:///' + os.path.join(BASE_DIR, 'restaurantmenu.db'),
+    },
+}
+
+SQLALCHEMY_DATABASE_URI = DATABASES['DEFAULT']['URI']
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+DEBUG = True
