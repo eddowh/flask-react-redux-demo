@@ -6,7 +6,7 @@
 #
 
 alembic==0.8.6            # via flask-migrate
-click==6.6                # via flask, pip-tools
+click==6.6                # via flask, pip-tools, python-dotenv
 first==2.0.1              # via pip-tools
 Flask-Migrate==1.8.0
 Flask-Script==2.0.5       # via flask-migrate
@@ -16,7 +16,9 @@ itsdangerous==0.24        # via flask
 Jinja2==2.8               # via flask
 Mako==1.0.4               # via alembic
 MarkupSafe==0.23          # via jinja2, mako
+ordereddict==1.1          # via python-dotenv
 pip-tools==1.6.5
+python-dotenv==0.5.1
 python-editor==1.0.1      # via alembic
 six==1.10.0               # via pip-tools
 SQLAlchemy==1.0.13        # via alembic, flask-sqlalchemy

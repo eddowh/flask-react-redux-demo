@@ -53,8 +53,6 @@ def new_restaurant_menu_item(id):
     restaurant = Restaurant.query.filter_by(id=id).first_or_404()
     data = request.get_json()
 
-    print(data)
-
     name = data.get('name')
     price = data.get('price')
 

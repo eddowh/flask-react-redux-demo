@@ -5,3 +5,9 @@ __pycache__/
 
 # Database
 *.db
+
+# Environment variables
+.env
+
+# Deprecated/unused scripts
+scripts/deprecated
