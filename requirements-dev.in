@@ -1,3 +1,4 @@
 -r requirements.in
 pip-tools==1.6.5
+psycopg2==2.6.1
 python-dotenv==0.5.1

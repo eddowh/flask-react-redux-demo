@@ -18,6 +18,7 @@ Mako==1.0.4               # via alembic
 MarkupSafe==0.23          # via jinja2, mako
 ordereddict==1.1          # via python-dotenv
 pip-tools==1.6.5
+psycopg2==2.6.1
 python-dotenv==0.5.1
 python-editor==1.0.1      # via alembic
 six==1.10.0               # via pip-tools
