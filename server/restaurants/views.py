@@ -27,6 +27,42 @@ def restaurant_detail(restaurant_id):
     )
 
 
+@bp.route('/<int:restaurant_id>/edit/', methods=['POST'])
+def edit_restaurant(restaurant_id):
+    restaurant = Restaurant.query.filter_by(id=restaurant_id).first_or_404()
+    data = request.get_json()
+    is_modified = False
+
+    for field in ['name']:
+        new_data = data.get(field)
+        if new_data and new_data != getattr(restaurant, field):
+            setattr(restaurant, field, new_data)
+            is_modified = True
+
+    if is_modified:
+        db.session.commit()
+    return Response(
+        status='201',
+        headers={
+            'Location': url_for('restaurants.restaurant_detail',
+                                restaurant_id=restaurant.id),
+        }
+    )
+
+
+@bp.route('/<int:restaurant_id>/delete/', methods=['POST'])
+def delete_restaurant(restaurant_id):
+    restaurant = Restaurant.query.filter_by(id=restaurant_id).first_or_404()
+    db.session.delete(restaurant)
+    db.session.commit()
+    return Response(
+        status='204',
+        headers={
+            'Location': url_for('restaurants.restaurants_index'),
+        }
+    )
+
+
 @bp.route('/<int:restaurant_id>/newmenuitem/', methods=['POST'])
 def new_restaurant_menu_item(restaurant_id):
     restaurant = Restaurant.query.filter_by(id=restaurant_id).first_or_404()
