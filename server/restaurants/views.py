@@ -87,3 +87,36 @@ def menu_item_detail(restaurant_id, menu_id):
     menu_item = restaurant.menuitems.filter_by(id=menu_id).first_or_404()
 
     return jsonify(get_menu_item_context(menu_item))
+
+
+@bp.route('/<int:restaurant_id>/<int:menu_id>/edit/', methods=['POST'])
+def edit_menu_item(restaurant_id, menu_id):
+    restaurant = Restaurant.query.filter_by(id=restaurant_id).first_or_404()
+    menu_item = restaurant.menuitems.filter_by(id=menu_id).first_or_404()
+    data = request.get_json()
+    is_modified = False
+
+    for field in ['name', 'course', 'description']:
+        new_data = data.get(field)
+        if new_data and new_data != getattr(menu_item, field):
+            setattr(menu_item, field, new_data)
+            is_modified = True
+
+    new_price = round(data.get('price') * CENTS_PER_DOLLAR)
+    if new_price > 0:
+        if new_price != menu_item.price:
+            menu_item.price = new_price
+            is_modified = True
+    else:
+        return '', 400
+
+    if is_modified:
+        db.session.commit()
+    return Response(
+        status='201',
+        headers={
+            'Location': url_for('restaurants.menu_item_detail',
+                                restaurant_id=restaurant.id,
+                                menu_id=menu_item.id),
+        }
+    )
