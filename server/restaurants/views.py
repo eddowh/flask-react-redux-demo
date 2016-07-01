@@ -120,3 +120,19 @@ def edit_menu_item(restaurant_id, menu_id):
                                 menu_id=menu_item.id),
         }
     )
+
+
+@bp.route('/<int:restaurant_id>/<int:menu_id>/delete/', methods=['POST'])
+def delete_menu_item(restaurant_id, menu_id):
+    restaurant = Restaurant.query.filter_by(id=restaurant_id).first_or_404()
+    menu_item = restaurant.menuitems.filter_by(id=menu_id).first_or_404()
+
+    db.session.delete(menu_item)
+    db.session.commit()
+    return Response(
+        status='204',
+        headers={
+            'Location': url_for('restaurants.restaurant_detail',
+                                restaurant_id=restaurant.id),
+        }
+    )
