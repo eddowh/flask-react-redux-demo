@@ -22,7 +22,8 @@ class MenuItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     description = db.Column(db.Text)
-    price = db.Column(db.Numeric(precision=2), nullable=False)
+    # store number of cents
+    price = db.Column(db.Integer, nullable=False)
     course = db.Column(db.String(250))
     restaurant_id = db.Column(db.Integer,
                               db.ForeignKey('restaurants_restaurant.id'))
