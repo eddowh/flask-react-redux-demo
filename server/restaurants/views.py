@@ -12,6 +12,7 @@ bp = Blueprint('restaurants', __name__)
 
 def get_menu_item_context(menu_item):
     return OrderedDict([
+        ("id", menu_item.id),
         ("restaurant_id", menu_item.restaurant.id),
         ("name", menu_item.name),
         ("price", "{:.2f}".format(menu_item.price)),
@@ -40,17 +41,17 @@ def restaurants_index():
     ])
 
 
-@bp.route('/<id>', methods=['GET'])
-def restaurant_detail(id):
-    restaurant = Restaurant.query.filter_by(id=id).first_or_404()
+@bp.route('/<int:restaurant_id>', methods=['GET'])
+def restaurant_detail(restaurant_id):
+    restaurant = Restaurant.query.filter_by(id=restaurant_id).first_or_404()
     return jsonify(
         get_restaurant_context(restaurant)
     )
 
 
-@bp.route('/<id>/new/', methods=['POST'])
-def new_restaurant_menu_item(id):
-    restaurant = Restaurant.query.filter_by(id=id).first_or_404()
+@bp.route('/<int:restaurant_id>/newmenuitem/', methods=['POST'])
+def new_restaurant_menu_item(restaurant_id):
+    restaurant = Restaurant.query.filter_by(id=restaurant_id).first_or_404()
     data = request.get_json()
 
     name = data.get('name')
@@ -69,7 +70,7 @@ def new_restaurant_menu_item(id):
             status='201',
             headers={
                 'Location': url_for('restaurants.restaurant_detail',
-                                    id=restaurant.id),
+                                    restaurant_id=restaurant.id),
             }
         )
     else:
