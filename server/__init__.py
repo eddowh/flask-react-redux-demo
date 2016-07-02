@@ -3,8 +3,9 @@
 from importlib import import_module
 
 from flask import Flask
-from flask_script import Manager
+from flask_cors import CORS
 from flask_migrate import Migrate
+from flask_script import Manager
 
 import settings
 
@@ -13,6 +14,9 @@ from sqlalch import db
 
 app = Flask(__name__)
 app.config.from_object(settings)
+
+# allow cross-origin
+CORS(app)
 
 # flask-sqlalchemy
 db.init_app(app)

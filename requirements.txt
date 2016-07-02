@@ -7,14 +7,16 @@
 
 alembic==0.8.6            # via flask-migrate
 click==6.6                # via flask
+Flask-Cors==2.1.2
 Flask-Migrate==1.8.0
 Flask-Script==2.0.5       # via flask-migrate
 Flask-SQLAlchemy==2.1     # via flask-migrate
-Flask==0.11.1             # via flask-migrate, flask-script, flask-sqlalchemy
+Flask==0.11.1             # via flask-cors, flask-migrate, flask-script, flask-sqlalchemy
 itsdangerous==0.24        # via flask
 Jinja2==2.8               # via flask
 Mako==1.0.4               # via alembic
 MarkupSafe==0.23          # via jinja2, mako
 python-editor==1.0.1      # via alembic
+Six==1.10.0               # via flask-cors
 SQLAlchemy==1.0.13        # via alembic, flask-sqlalchemy
 Werkzeug==0.11.10         # via flask
