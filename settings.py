@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from sqlalchemy.engine.url import URL
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-APP_DIR = os.path.join(BASE_DIR, 'server')
+APP_DIR = os.path.join(BASE_DIR, 'api')
 
 DOTENV_PATH = os.path.join(BASE_DIR, '.env')
 load_dotenv(DOTENV_PATH)
