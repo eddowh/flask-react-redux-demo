@@ -11,3 +11,14 @@ __pycache__/
 
 # Deprecated/unused scripts
 scripts/deprecated
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Node dependencies
+node_modules
+
+# Build directory
+dist
