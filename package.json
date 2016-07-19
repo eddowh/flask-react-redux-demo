@@ -1,5 +1,5 @@
 {
-  "name": "flask-react-demo",
+  "name": "flask-react-redux-demo",
   "version": "1.0.0",
   "description": "Flask, SQLAlchemy, and React.js Demo",
   "main": "index.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eddowh/flask-react-demo.git"
+    "url": "git+https://github.com/eddowh/flask-react-redux-demo.git"
   },
   "author": "Eddo W. Hintoso",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/eddowh/flask-react-demo/issues"
+    "url": "https://github.com/eddowh/flask-react-redux-demo/issues"
   },
-  "homepage": "https://github.com/eddowh/flask-react-demo#readme",
+  "homepage": "https://github.com/eddowh/flask-react-redux-demo#readme",
   "dependencies": {
     "babel-polyfill": "^6.9.1",
     "es6-promise": "^3.2.1",

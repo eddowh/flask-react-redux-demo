@@ -10,6 +10,7 @@ Project Dependencies
 
 .. code:: sh
 
+    $ npm install --progress
     $ pip install -r requirements-dev.txt
 
 
@@ -34,9 +35,8 @@ Following that, run the database migrations:
 
     $ python manage.py db upgrade
 
-
-Run server
-----------
+Run the Backend Server
+----------------------
 
 .. code:: sh
 
@@ -46,6 +46,18 @@ Visit the application at http://localhost:5000 (the port is set to 5000 by defau
 
 For more options, consult ``python manage.py runserver --help``.
 
+Run the Frontend Server
+-----------------------
+
+The backend API must be running before you start the React app.
+
+.. code:: sh
+
+    $ npm run dev
+
+Visit the application at http://localhost:3000 (the port is set to 3000 by default).
+
+For more options, consult ``webpack-dev-server --help``.
 
 Licensing
 =========
